@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  shop_name: MyString
+  seller: one
+  shop_summary: MyText
+
+two:
+  shop_name: MyString
+  seller: two
+  shop_summary: MyText

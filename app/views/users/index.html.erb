@@ -1,0 +1,47 @@
+<div class="flexing-create-user">
+ <div class="para1-create-user">
+    <h1 style="color: white;">VIRTUAL MARKET HUB</h1>
+    <h3 style="color: white;"> Local Market Ka Virtual vocal</h3>
+    <div class="inner">
+      <img src="<%= asset_path('up-image-login.jpg') %>" alt="Description of the image" width="600px" height="300px" >
+      <img src="<%= asset_path('down-image-login.jpg') %>" alt="Description of the image" width="600px" height="200px">
+    </div>
+
+ </div>
+     
+ <div class="para2-create-user">
+    <h1 style="color: white"> sign Up </h1>
+    <%= form_with model: @user, url: signup_path do |form| %>
+      <% if @user.errors.any? %>
+          <div class="alert alert-danger">
+          <% @user.errors.full_messages.each do |message| %>
+            <div><%=message%></div>
+          <%end%>
+          </div>
+          <%end%>
+      <div class="mb-3">
+      <%=form.label :email,style: "color: white"%>
+      <%= form.text_field :email, class: "form-control", placeholder: "xyz@gmail.com" %>
+      </div>
+      <div class="mb-3">
+      <%=form.label :password, style: "color: white"%>
+      <%=form.password_field :password, class: "form-control", placeholder: "password"%>
+      </div>
+      <div class="mb-3">
+      <%=form.label :confirm_password, style: "color: white"%>
+      <%=form.password_field :password_confirmation, class: "form-control", placeholder: "confirm_password"%>
+      </div>
+      <div class="mb-3">
+      <%=form.label :Username, style: "color: white" %>
+      <%=form.text_field :username, class: "form-control", placeholder: "Username"%>
+      </div>
+      <div class="mb-3">
+      <%=form.label :Address, style: "color: white" %>
+      <%=form.text_field :address, class: "form-control", placeholder: "Address"%>
+      </div>
+      <div class="mb-3">
+        <%=form.submit "Sign Up", class: "btn btn-primary" %>
+      </div>
+    <%end%>
+ </div>
+</div>

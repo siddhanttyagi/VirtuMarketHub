@@ -1,5 +1,17 @@
 class UsersController < ApplicationController
+  def index
+    @user=User.new
+  end
+
   def create
+    @user=User.new(user_params)
+    if @user.save
+      redirect_to root_path, notice: "Successfully created the account"
+    else
+      
+      render :index
+    end
+
   end
 
   def read
@@ -9,5 +21,11 @@ class UsersController < ApplicationController
   end
 
   def delete
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:email,:password,:address,:username)
   end
 end

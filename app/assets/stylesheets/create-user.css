@@ -1,0 +1,18 @@
+.flexing-create-user{
+    display: flex;
+}
+.para1-create-user{
+    background-color: rgb(48, 45, 45);
+    width: 600px;
+    height: fit-content;
+}
+.para2-create-user
+{
+    background-color: rgb(48,45,45);
+    height: fit-content;
+    width: 800px;
+}
+.inner{
+    display: flex;
+    flex-direction: column;
+}

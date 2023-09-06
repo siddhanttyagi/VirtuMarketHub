@@ -1,2 +1,32 @@
-<h1>Users#read</h1>
-<p>Find me in app/views/users/read.html.erb</p>
+<div class="flexing-create-user">
+ <div class="para1-create-user">
+    <h1 style="color: white;margin-left: 40px;">VIRTUAL MARKET HUB</h1>
+    <h3 style="color: rgb(182, 62, 203);margin-left: 55px;"> Local Market Ka Virtual vocal</h3>
+    <div class="inner">
+      <img src="<%= asset_path("second-image.png") %>" alt="Description of the image" width="908px" height="500px" >
+      
+      
+    </div>
+
+ </div>
+     
+ <div class="para2-create-user">
+    <div class=signup-user>
+    <h1 style="color: rgb(182, 62, 203)"> Login </h1>
+    <%= form_with  url: login_path do |form| %>
+      <div class="mb-3">
+      <%= form.label :email, style: "color: white" %>
+      <%= form.text_field :email, class: "form-control", placeholder: "xyz@gmail.com" %>
+      </div>
+      <div class="mb-3">
+      <%= form.label :password, style: "color: white" %>
+      <%= form.password_field :password, class: "form-control", placeholder: "password" %>
+      </div>
+      <div class="mb-3">
+        <%= form.submit "Log in", class: "btn btn-primary" %>
+        <%= link_to "New User! Click to signup", signup_path, style: "margin-left: 12px" %>
+      </div>
+    <% end %>
+    </div>
+ </div>
+</div>

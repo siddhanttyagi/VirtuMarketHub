@@ -13,6 +13,9 @@
  <div class="para2-create-user">
     <div class=signup-user>
     <h1 style="color: rgb(182, 62, 203)"> Login </h1>
+    <%if @check==false%>
+      <div style="background-color: rgb(215, 62, 44);margin-bottom: 20px;border-radius: 5px;height: 80px;"><h4 style="color: white;margin-top: 13px;margin-left: 70px;padding-top: 22px;">Wrong credentials</h4></div>
+    <%end%>
     <%= form_with  url: login_path do |form| %>
       <div class="mb-3">
       <%= form.label :email, style: "color: white" %>

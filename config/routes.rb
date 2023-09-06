@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   get "signup", to: "users#index"
   post "signup", to: "users#create"
+  delete "logout", to: "sessions#destroy"
   root "homes#index"
   
 end

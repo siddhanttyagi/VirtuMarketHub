@@ -8,8 +8,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to root_path, notice: "Successfully created the account"
     else
-      
-      render :index
+      render :index, status: :unprocessable_entity
     end
 
   end

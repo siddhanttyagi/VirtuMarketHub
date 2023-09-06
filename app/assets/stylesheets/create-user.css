@@ -1,5 +1,8 @@
 .flexing-create-user{
+    position: fixed;
     display: flex;
+    background-color: rgb(48, 45, 45);
+    height: -webkit-fill-available;
 }
 .para1-create-user{
     background-color: rgb(48, 45, 45);
@@ -9,10 +12,16 @@
 .para2-create-user
 {
     background-color: rgb(48,45,45);
-    height: fit-content;
-    width: 800px;
+    height: 100vh;
+    width: 100vw;
 }
 .inner{
     display: flex;
     flex-direction: column;
+}
+.signup-user{
+    height: 500px;
+    margin-left: 150px;
+    margin-top: 25px;
+    width: 350px;
 }

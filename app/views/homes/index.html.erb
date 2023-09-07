@@ -1,5 +1,86 @@
-<h1>this is your home page</h1>
-<%if @user%>
-   Logged in as: <%=@user.email%>
+
+<% if @user %>
+   Logged in as: <%= @user.email %>
    <%= button_to "Logout", logout_path, method: :delete %>
-<%end%>
+<% end %>
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Home</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">OFFERS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">NEW</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">TRENDING</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            EDIT PROFILE
+          </a> 
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">
+              <% if @user %>
+                  Logged in as: <%= @user.email %>
+               <% else %>
+                  <%= link_to "Login", login_path, style: "color: black; font-size: 20px; padding-left: 15px; text-decoration: none;" %>
+                  <hr>
+                  <%= link_to "Signup", signup_path, style: "color: black; font-size: 20px; padding-left: 15px; text-decoration: none;" %>
+                  <hr>
+               <% end %> 
+            </a></li>
+            <% if @user %>
+               <li class="dropdown-item">
+               <%= button_to "Logout", logout_path, method: :delete, class: "btn btn-primary"%>
+               <hr>
+            </li>
+            <%end%>
+            <li><a class="dropdown-item" href="#">VIEW PROFILE</a></li>
+          </ul>
+        </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<div id="carouselExample" class="carousel slide">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="<%= asset_path("slider1.jpg") %>" class="d-block w-100" alt="..." height="400px">
+    </div>
+    <div class="carousel-item active">
+      <img src="<%= asset_path("v-logo.png") %>" class="d-block w-100" alt="..." height="400px">
+    </div>
+    <div class="carousel-item">
+      <img src="<%= asset_path("slider2.jpg") %>" class="d-block w-100" alt="..." height="400px">
+    </div>
+    <div class="carousel-item">
+      <img src="<%= asset_path("slider3.png") %>" class="d-block w-100" alt="..." height="400px">
+    </div>
+    <div class="carousel-item">
+      <img src="<%= asset_path("slider4.jpg") %>" class="d-block w-100" alt="..." height="400px">
+    </div>
+    <div class="carousel-item">
+      <img src="<%= asset_path("slider5.jpg") %>" class="d-block w-100" alt="..." height="400px">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>

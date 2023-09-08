@@ -1,1 +1,6 @@
-<h1> sellers Home page <h1>
+<h1> sellers Home page </h1>
+<% if @user %>
+    Logged in as: <%= @user.email %>
+    <%= button_to "Logout", sellers_logout_path, method: :delete, class: "btn btn-primary"%>
+
+<%end%>

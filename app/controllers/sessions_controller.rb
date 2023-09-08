@@ -19,4 +19,9 @@ class SessionsController < ApplicationController
 
     def createseller
     end
+
+    def sellerdestroy
+        session[:seller_id]=nil
+        redirect_to sellers_signup_path, notice: "Logged out"
+    end
 end

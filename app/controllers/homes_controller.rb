@@ -5,6 +5,9 @@ class HomesController < ApplicationController
         end
     end
     def sellersindex
+        if session[:seller_id]
+            @user=Seller.find_by(id: session[:seller_id])
+        end
     end
     
 end

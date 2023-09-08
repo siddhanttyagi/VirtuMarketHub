@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   post "sellers/signup", to: "sellers#create"
   post "sellers/login", to: "sessions#createseller"
   get "sellers/home", to: "homes#sellersindex"
-
+  delete "sellers/logout", to: "sessions#sellerdestroy"
   root "homes#index"
   
 end

@@ -19,6 +19,13 @@ Rails.application.routes.draw do
   post "sellers/login", to: "sessions#createseller"
   get "sellers/home", to: "homes#sellersindex"
   delete "sellers/logout", to: "sessions#sellerdestroy"
+
+  post "additems", to: "homes#itemadd"
+
+  
+
+
+
   root "homes#index"
   
 end

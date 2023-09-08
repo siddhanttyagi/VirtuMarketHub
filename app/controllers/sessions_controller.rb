@@ -18,6 +18,17 @@ class SessionsController < ApplicationController
     end
 
     def createseller
+        @check=true
+        user=Seller.find_by(email: params[:email])
+        if user.present? && user.password == params[:password]
+            session[:seller_id]=user.id
+            redirect_to sellers_home_path, notice: "Logged in succesfully"
+            @check=true
+        else
+            @check=false
+            render 'sellers/read', status: :unprocessable_entity
+
+        end
     end
 
     def sellerdestroy

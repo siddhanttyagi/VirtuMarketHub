@@ -16,4 +16,7 @@ class SessionsController < ApplicationController
 
         end
     end
+
+    def createseller
+    end
 end

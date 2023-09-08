@@ -9,6 +9,16 @@ Rails.application.routes.draw do
   get "login", to: "users#read"
   post "login", to: "sessions#create"
   delete "logout", to: "sessions#destroy"
+  get "offers", to: "offers#index"
+  get "newshops", to: "newshops#index"
+  get "trending", to: "trendings#index"
+
+  get "sellers/login", to: "sellers#read"
+  get "sellers/signup", to: "sellers#index"
+  post "sellers/signup", to: "sellers#create"
+  post "sellers/login", to: "sessions#createseller"
+  get "sellers/home", to: "homes#sellersindex"
+
   root "homes#index"
   
 end

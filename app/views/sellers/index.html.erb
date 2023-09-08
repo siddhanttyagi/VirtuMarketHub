@@ -1,0 +1,51 @@
+<div class="flexing-create-user">
+ <div class="para1-create-user">
+    <h1 style="color: white;margin-left: 40px;">VIRTUAL MARKET HUB</h1>
+    <h3 style="color: rgb(182, 62, 203);margin-left: 55px;"> Local Market Ka Virtual vocal</h3>
+    <div class="inner">
+      <img src="<%= asset_path("second-image.png") %>" alt="Description of the image" width="908px" height="500px" >
+      
+      
+    </div>
+
+ </div>
+     
+ <div class="para2-create-user">
+    <div class=signup-user>
+    <h1 style="color: rgb(182, 62, 203)"> Sign Up As Seller </h1>
+    <%= form_with model: @user, url: sellers_signup_path do |form| %>
+      <% if @user.errors.any? %>
+          <div style="background-color: red">
+            <% @user.errors.full_messages.each do |message| %>
+            <div style="color: white;"><%= message %></div>
+           <% end %>
+          </div>
+      <% end %>
+      <div class="mb-3">
+      <%= form.label :email, style: "color: white" %>
+      <%= form.text_field :email, class: "form-control", placeholder: "xyz@gmail.com" %>
+      </div>
+      <div class="mb-3">
+      <%= form.label :password, style: "color: white" %>
+      <%= form.password_field :password, class: "form-control", placeholder: "password" %>
+      </div>
+      <div class="mb-3">
+      <%= form.label :confirm_password, style: "color: white" %>
+      <%= form.password_field :confirm_password, class: "form-control", placeholder: "confirm_password" %>
+      </div>
+      <div class="mb-3">
+      <%= form.label :Username, style: "color: white" %>
+      <%= form.text_field :sellername, class: "form-control", placeholder: "Username" %>
+      </div>
+      <div class="mb-3">
+      <%= form.label :Address, style: "color: white" %>
+      <%= form.text_field :address, class: "form-control", placeholder: "Address" %>
+      </div>
+      <div class="mb-3">
+        <%= form.submit "Sign Up", class: "btn btn-primary" %>
+        <%= link_to "Already a User! Click to login", sellers_login_path, style: "margin-left: 12px" %>
+      </div>
+    <% end %>
+    </div>
+ </div>
+</div>

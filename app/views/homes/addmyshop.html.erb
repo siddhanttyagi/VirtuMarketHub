@@ -1,0 +1,34 @@
+<h1>You don't have a shop yet please add it then only you can add items </h1>
+<% if @user %>
+    Logged in as: <%= @user.email %>
+    <%= button_to "Logout", sellers_logout_path, method: :delete, class: "btn btn-primary"%>
+<%end%>
+<div class="para2-create-user" style="background-color : white;">
+    <div class=signup-user>
+    <h1 style="color: rgb(182, 62, 203)"> ADD SHOP </h1>
+    <%= form_with model: @shop, url: addshop_path do |form| %>
+      <% if @checker==false %>
+         <div style="background-color: red; height:50px;"><h5>error please check your fields</h5></div>
+      <%end%>
+      <div class="mb-3">
+      <%= form.label :shop_name %>
+      <%= form.text_field :shop_name, class: "form-control" %>
+      </div>
+      <div class="mb-3">
+      <%= form.label :shop_summary %>
+      <%= form.text_field :shop_summary, class: "form-control" %>
+      </div>
+      <div class="mb-3">
+         <%=form.label :shop_image %>
+         <%=form.file_field :shop_image %>
+      </div>
+      
+    
+      <div class="mb-3">
+        <%= form.submit "ADD SHOP", class: "btn btn-primary" %>
+        
+      </div>
+    <% end %>
+    </div>
+ </div>
+ 

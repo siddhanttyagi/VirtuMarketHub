@@ -14,14 +14,14 @@ class HomesController < ApplicationController
             if @user && @user.shops.any?
                 @checker3 = true
             end
-        end
-        
-        
-        
-        
+        end   
         
     end
-    
+    def addmyshop
+        if session[:seller_id]
+            @user=Seller.find_by(id: session[:seller_id])
+        end
+    end
     
     def itemadd
         @checker=true
@@ -37,14 +37,14 @@ class HomesController < ApplicationController
 
               if @item.save
                 @checker=true
-                redirect_to root_path, notice: "Successfully created the account"
+                render :sellersindex, notice: "Successfully created the account"
               else
                 @checker=false
                 render :sellersindex, status: :unprocessable_entity
               end
             else
                 @checker=false
-                render :sellersindex, status: :unprocessable_entity  
+                redirect_to sellers_shop_path
             end
         else
             @checker=false
@@ -52,32 +52,31 @@ class HomesController < ApplicationController
         end
     end
 
+    
     def shopadd
         
-        
+        @checker=true
         if session[:seller_id]
-            @checker2=true
+            
             seller_id=session[:seller_id]
             @shop=Shop.new(shop_params)
             @shop.seller_id=seller_id
             if @shop.save
-                @checker2=true
-                @checker3=true
+                redirect_to sellers_home_path
+                @checker=true
             else
-                render :sellersindex, status: :unprocessable_entity
-                @checker2=false
+                @checker=false
+                render :addmyshop, status: :unprocessable_entity
+                
             end
-        
-        else
-            @checker2=false
-            render :sellersindex, status: :unprocessable_entity
         end
+        
     end
     
 
     private
     def items_params
-        params.permit(:item_name, :quantity, :summary, :price, :image)
+        params.require(:shop).permit(:item_name, :quantity, :summary, :price, :image)
     end
 
     def shop_params

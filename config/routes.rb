@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   delete "sellers/logout", to: "sessions#sellerdestroy"
 
   post "additems", to: "homes#itemadd"
+  get  "sellers/shop", to: "homes#addmyshop"
   post "addshop", to: "homes#shopadd"
 
   

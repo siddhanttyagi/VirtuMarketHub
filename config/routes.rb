@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   post "additems", to: "homes#itemadd"
   get  "sellers/shop", to: "homes#addmyshop"
   post "addshop", to: "homes#shopadd"
+  get '/shops/:shop_id/items', to: 'items#index', as: 'shop_items'
 
   
 

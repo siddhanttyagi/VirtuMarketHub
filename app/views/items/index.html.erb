@@ -53,51 +53,16 @@
     </div>
   </div>
 </nav>
-
-<div id="carouselExample" class="carousel slide">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="<%= asset_path("slider1.jpg") %>" class="d-block w-100" alt="..." height="400px">
-    </div>
-    <div class="carousel-item">
-      <img src="<%= asset_path("slider2.jpg") %>" class="d-block w-100" alt="..." height="400px">
-    </div>
-    <div class="carousel-item">
-      <img src="<%= asset_path("slider3.png") %>" class="d-block w-100" alt="..." height="400px">
-    </div>
-    <div class="carousel-item">
-      <img src="<%= asset_path("slider4.jpg") %>" class="d-block w-100" alt="..." height="400px">
-    </div>
-    <div class="carousel-item">
-      <img src="<%= asset_path("slider5.jpg") %>" class="d-block w-100" alt="..." height="400px">
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
-
-<h2 style="text-align:center">Product Card</h2>
-
-<div class="flex-container">
-  <% @shops.each do |shop| %>
+<div class="flex-container" style="margin-top:100px">
+  <% @items.each do |item| %>
     <div class="card" style="margin-right: 40px; margin-left: 75px; margin-bottom: 40px;">
-      <% if shop.shop_image.present? %>
-        <%= link_to shop_items_path(shop), style: "text-decoration: none; color: inherit;" do %>
-          <%= image_tag(shop.shop_image, style: "width: 300px; height: 250px") %>
-        <% end %>
+      <% if item.image.present? %>
+          <%= image_tag(item.image, style: "width: 300px; height: 250px") %>
       <% end %>
-      <h1><%= shop.shop_name %></h1>
-      <p class="price"><%= shop.shop_summary %></p>
-      <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
+      <h1><%= item.item_name %></h1>
+      <p class="price"><%= item.summary %></p>
+      <p class="price">₹<%=item.price %></p>
       <p><button>Add to Cart</button></p>
     </div>
   <% end %>
 </div>
-
-

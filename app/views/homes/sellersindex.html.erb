@@ -3,12 +3,21 @@
     Logged in as: <%= @user.email %>
     <%= button_to "Logout", sellers_logout_path, method: :delete, class: "btn btn-primary"%>
 <%end%>
+<% if flash[:notice] %>
+  <div class="flash-notice">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
 <div class="para2-create-user" style="background-color : white;">
     <div class=signup-user>
     <h1 style="color: rgb(182, 62, 203)"> ADD items </h1>
     <%= form_with model: @item, url: additems_path do |form| %>
       <% if @checker==false %>
          <div style="background-color: red; height:50px;"><h5>error please check your fields</h5></div>
+      <%end%>
+      <% if @checkmate==true %>
+         <div style="background-color: green; height:50px;"><h5>Items added successfully</h5></div>
       <%end%>
       <div class="mb-3">
       <%= form.label :item_name %>

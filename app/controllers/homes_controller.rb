@@ -5,18 +5,16 @@ class HomesController < ApplicationController
         if session[:user_id]
             @user=User.find_by(id: session[:user_id])
         end
+        @shops=Shop.all
     end
     def sellersindex
         @checker3=false
         if session[:seller_id]
             @user=Seller.find_by(id: session[:seller_id])
-
-            if @user && @user.shops.any?
-                @checker3 = true
-            end
         end   
-        
     end
+        
+    
     def addmyshop
         if session[:seller_id]
             @user=Seller.find_by(id: session[:seller_id])
@@ -25,16 +23,17 @@ class HomesController < ApplicationController
     
     def itemadd
         @checker=true
+        @checkmate=false
         if session[:seller_id]
             seller_id = session[:seller_id]
             shop_id = Shop.find_by(seller_id: seller_id)&.id
-      
+             
             if shop_id
               # Create a new item and associate it with the seller and shop
               @item = Item.new(items_params)
               @item.seller_id = seller_id
               @item.shop_id = shop_id
-
+              flash[:notice] = "Item added successfully."
               if @item.save
                 @checker=true
                 render :sellersindex, notice: "Successfully created the account"
@@ -76,7 +75,7 @@ class HomesController < ApplicationController
 
     private
     def items_params
-        params.require(:shop).permit(:item_name, :quantity, :summary, :price, :image)
+        params.permit(:item_name, :quantity, :summary, :price, :image)
     end
 
     def shop_params

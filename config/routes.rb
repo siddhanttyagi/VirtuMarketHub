@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   get  "sellers/shop", to: "homes#addmyshop"
   post "addshop", to: "homes#shopadd"
   get '/shops/:shop_id/items', to: 'items#index', as: 'shop_items'
+  post "cart", to: 'items#cart'
+  get "carts", to: 'items#carts'
 
   
 

@@ -21,6 +21,11 @@
            <%= link_to "TRENDING", newshops_path, style: "color: black; font-size: 20px; padding-left: 15px; text-decoration: none;" %>
           </div>
         </li>
+        <li class="nav-item">
+          <div class="nav-link active" aria-current="page">
+           <%= link_to "CART🛒", carts_path, style: "color: black; font-size: 20px; padding-left: 15px; text-decoration: none;" %>
+          </div>
+        </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 20px;color: black;margin-left:15px">
             EDIT PROFILE
@@ -38,10 +43,10 @@
             </a></li>
             <% if @user %>
                <li class="dropdown-item">
-               <%= button_to "Logout", logout_path, method: :delete, class: "btn btn-primary"%>
+               <%= button_to "Logout", logout_path, method: :delete, class: "btn btn-primary" %>
                <hr>
             </li>
-            <%end%>
+            <% end %>
             <li><a class="dropdown-item" href="#">VIEW PROFILE</a></li>
           </ul>
         </li>

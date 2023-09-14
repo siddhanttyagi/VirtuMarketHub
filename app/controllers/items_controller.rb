@@ -24,6 +24,12 @@ class ItemsController < ApplicationController
             @items=Item.where(id: item_ids)
         end
     end
+
+    def destroy_cart_item
+        @data=session[:cart_data]
+        @data.delete(params[:id])
+        redirect_to carts_path
+    end
  
 
     

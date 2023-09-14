@@ -26,7 +26,8 @@ Rails.application.routes.draw do
   get '/shops/:shop_id/items', to: 'items#index', as: 'shop_items'
   post "cart", to: 'items#cart'
   get "carts", to: 'items#carts'
-
+  post 'destroyitemcart', to: 'items#destroy_cart_item'
+  
   
 
 

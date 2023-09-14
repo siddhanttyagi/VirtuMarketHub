@@ -30,6 +30,13 @@ class ItemsController < ApplicationController
         @data.delete(params[:id])
         redirect_to carts_path
     end
+
+
+    def payment
+        @item=params[:item]
+        @data=params[:data]
+        @total_amount = params[:total_amount].to_i
+    end
  
 
     

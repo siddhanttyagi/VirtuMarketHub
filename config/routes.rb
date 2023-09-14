@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   post "cart", to: 'items#cart'
   get "carts", to: 'items#carts'
   post 'destroyitemcart', to: 'items#destroy_cart_item'
-  
+  get 'payment', to: 'items#payment'
   
 
 

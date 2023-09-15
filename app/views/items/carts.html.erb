@@ -1,6 +1,6 @@
 
 <div style="display: flex;flex-direction:column;align-items: center;background-color: rgb(197, 154, 236);"><h1>ADDED ITEMS IN THE CART🛒</h1></div>
-
+<div><%= link_to "Go to items", shop_items_path(shop_id: @tempshop_id), class: "btn btn-primary" %></div>
 <%total_amount=0%>
 <div class="flex-container" style="margin-top: 100px;">
 
@@ -24,7 +24,7 @@
 
 </div>
 <div style="display:flex;flex-direction:row-reverse;">
-<div style="margin-right: 30px;margin-top: 5px;"><%= link_to "Go to Payment", payment_path(items: @items, data: @data, total_amount: total_amount), class: "btn btn-primary" %></div>
+<div style="margin-right: 30px;margin-top: 5px;"><%= link_to "Go to Payment", payment_path(data: @data, total_amount: total_amount), class: "btn btn-primary" %></div>
 <div style="background-color:rgb(144, 228, 144);height:50px;display:flex;flex-direction:row-reverse;margin-right:40px;padding-right:100px;margin-bottom: 50px;">
  <h1 style="font-size: 18px; font-weight: bold; color: #333;padding-left:50px;margin-top:10px;margin-left:10px">Total Amount : ₹<%= total_amount %></h1>
 </div>

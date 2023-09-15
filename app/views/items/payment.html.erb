@@ -1,4 +1,16 @@
-<h1> payment page </h1>
-<%=@item%>
-<%=@data%>
-<%=@total_amount%>
+<div style="display: flex;flex-direction:column;align-items: center;margin-bottom:50px;background-color: rgb(197, 154, 236);"><h1>PLACE YOUR ORDER🚚</h1></div>
+<div style="margin-left: 2px;width: fit-content;font-family: Arial, sans-serif; font-size: 25px; color: #333; padding: 10px;background-color:rgb(133, 133, 225)">
+  Your address: <%= @user.address %>
+</div>
+
+<div style="display: flex;flex-direction: column;align-items: center;margin-top: 50px;">
+    <h2 style="color:green">ORDER SUMMARY</h2>
+    <%if @items %>
+        <% @items.each do |item| %>
+            <div style="margin-bottom: 10px;"><h5><%= item.item_name %> x<%= @data[item.id.to_s]%>= ₹<%=(item.price.to_i)*(@data[item.id.to_s].to_i) %> </h5></div>
+        <%end%>
+    <%end%>
+    <h3>Total Amount:   ₹<%= @total_amount %> </h3>
+<div>
+
+

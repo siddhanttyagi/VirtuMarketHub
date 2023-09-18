@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   post 'orders', to:'items#placeorder'
   get 'searchshop', to: 'homes#search'
   post 'search', to:'homes#searchpost'
+  post '/shops/:shop_id/search', to: 'homes#searchpost'
 
   root "homes#index"
   

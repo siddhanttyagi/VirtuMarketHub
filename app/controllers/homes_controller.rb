@@ -71,6 +71,19 @@ class HomesController < ApplicationController
         end
         
     end
+
+    def search
+        shop_id=params[:id]
+        @shop=Shop.find(shop_id)
+    end
+
+    def searchpost
+        shop_name=params[:shop_name]
+        shop=Shop.find_by(shop_name: shop_name)
+        puts shop.id
+        redirect_to searchshop_path(id: shop.id)
+        
+    end
     
 
     private

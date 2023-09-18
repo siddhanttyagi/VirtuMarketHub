@@ -51,10 +51,25 @@
           </ul>
         </li>
       </ul>
-      <form class="d-flex" role="search">
+      <%# <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      </form> %>
+      <!-- app/views/shops/new.html.erb -->
+
+
+      <%= form_tag('search', method: 'post') do %>
+        <div class="d-flex flex-row justify-content-center align-items-center">
+          <div class="mr-2">
+            <%= text_field_tag 'shop_name', nil, class: 'form-control', placeholder: 'Search shop here' %>
+          </div>
+          <div>
+            <%= submit_tag 'Search', class: 'btn btn-primary' %>
+          </div>
+        </div>
+      <% end %>
+
+
     </div>
   </div>
 </nav>
@@ -100,7 +115,6 @@
       <h1><%= shop.shop_name %></h1>
       <p class="price"><%= shop.shop_summary %></p>
       <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
-      <p><button>Add to Cart</button></p>
     </div>
   <% end %>
 </div>

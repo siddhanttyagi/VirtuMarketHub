@@ -28,9 +28,10 @@ Rails.application.routes.draw do
   get "carts", to: 'items#carts'
   post 'destroyitemcart', to: 'items#destroy_cart_item'
   get 'payment', to: 'items#payment'
-  
 
-
+  post 'orders', to:'items#placeorder'
+  get 'searchshop', to: 'homes#search'
+  post 'search', to:'homes#searchpost'
 
   root "homes#index"
   

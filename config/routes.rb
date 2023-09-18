@@ -33,7 +33,9 @@ Rails.application.routes.draw do
   get 'searchshop', to: 'homes#search'
   post 'search', to:'homes#searchpost'
   post '/shops/:shop_id/search', to: 'homes#searchpost'
-
+  get 'profile', to: 'users#profile'
+  get 'updateprofile', to: 'users#update'
+  put 'editprofile', to: 'users#editprofile'
   root "homes#index"
   
 end

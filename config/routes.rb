@@ -36,6 +36,7 @@ Rails.application.routes.draw do
   get 'profile', to: 'users#profile'
   get 'updateprofile', to: 'users#update'
   put 'editprofile', to: 'users#editprofile'
+  get 'sellersorder', to: 'sellers#myorder'
   root "homes#index"
   
 end

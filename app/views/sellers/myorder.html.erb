@@ -1,0 +1,27 @@
+<h1 style="margin-left:40%; margin-bottom:2%"> Order details☎️ </h1>
+
+<table class="table table-striped table-dark">
+  <thead>
+    <tr>
+      <th scope="col">S.NO</th>
+      <th scope="col">orrder_id</th>
+      <th scope="col">Amount</th>
+      <th scope="col">order_details</th>
+    </tr>
+  </thead>
+  <tbody>
+     <% if @orders %>
+     <%cnt=0%>
+      <% @orders.each do |order| %>
+                  <tr>
+                        <th scope="row"><%=cnt%></th>
+                        <td><%=order.id%></td>
+                        <td>₹<%=order.amount%></td>
+                        <td><%=order.order_details%></td>
+                  </tr>
+                  <%cnt+=1%>
+            <% end %>
+      <%end%>
+    
+  </tbody>
+</table>

@@ -50,6 +50,7 @@ class UsersController < ApplicationController
     allowed_params[:password] = params[:user][:password] if params[:user][:password].present?
     allowed_params[:address] = params[:user][:address] if params[:user][:address].present?
     allowed_params[:username] = params[:user][:username] if params[:user][:username].present?
+    allowed_params[:password_confirmation] = params[:user][:password_confirmation] if params[:user][:password_confirmation].present?
     allowed_params
   end
 end

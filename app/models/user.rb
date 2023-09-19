@@ -11,6 +11,6 @@ private
 
   def password_match
     if password != password_confirmation
-      errors.add(:confirmation_password, "must match the password")
+      errors.add(:password_confirmation, "must match the password")
     end
   end

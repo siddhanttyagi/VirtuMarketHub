@@ -80,8 +80,9 @@ class HomesController < ApplicationController
     def searchpost
         shop_name=params[:shop_name]
         shop=Shop.find_by(shop_name: shop_name)
-        puts shop.id
-        redirect_to searchshop_path(id: shop.id)
+        if shop
+            redirect_to searchshop_path(id: shop.id)
+        end
         
     end
     

@@ -1,13 +1,12 @@
-<h1> sellers Home page </h1>
+<h1 style="margin-left:40%"> sellers Home page </h1>
+<div style="display: flex;flex-direction: row;">
+<div style="margin-right: 70%;"><%= link_to "My orders", sellersorder_path, class:"btn btn-primary" %></div>
 <% if @user %>
     Logged in as: <%= @user.email %>
     <%= button_to "Logout", sellers_logout_path, method: :delete, class: "btn btn-primary"%>
 <%end%>
-<% if flash[:notice] %>
-  <div class="flash-notice">
-    <%= flash[:notice] %>
-  </div>
-<% end %>
+</div>
+
 
 <div class="para2-create-user" style="background-color : white;">
     <div class=signup-user>

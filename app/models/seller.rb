@@ -13,9 +13,8 @@ end
 private
 
   def password_match
-    if session[:user_id]
       if password != confirm_password
         errors.add(:confirm_password, "must match the password")
       end
-    end
+    
   end

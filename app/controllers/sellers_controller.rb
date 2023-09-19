@@ -25,6 +25,12 @@ class SellersController < ApplicationController
   def delete
   end
 
+  def myorder
+    if session[:seller_id]
+      @orders=Order.where(seller_id: session[:seller_id])
+    end
+  end
+
   private
 
   def user_params

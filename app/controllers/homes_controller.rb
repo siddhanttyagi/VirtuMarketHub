@@ -86,6 +86,8 @@ class HomesController < ApplicationController
 
     def searchitems
         item_name=params[:item_name]
+        @items=Item.where('lower(item_name) LIKE ?', "%#{item_name.downcase}%")
+
         
         
     end

@@ -6,15 +6,8 @@ class Seller < ApplicationRecord
     has_many :items, dependent: :destroy
     has_many :orders, dependent: :destroy
     validates :confirm_password, presence: true
-    validate :password_match
+    
 end
 
 
-private
 
-  def password_match
-      if password != confirm_password
-        errors.add(:confirm_password, "must match the password")
-      end
-    
-  end

@@ -28,7 +28,7 @@ class UsersController < ApplicationController
       @user = User.find_by(id: session[:user_id])
     end
   end
-
+ 
   def editprofile
     if session[:user_id]
       @user = User.find(session[:user_id])
@@ -51,6 +51,6 @@ class UsersController < ApplicationController
     allowed_params[:address] = params[:user][:address] if params[:user][:address].present?
     allowed_params[:username] = params[:user][:username] if params[:user][:username].present?
     allowed_params[:password_confirmation] = params[:user][:password_confirmation] if params[:user][:password_confirmation].present?
-    allowed_params
+    
   end
 end

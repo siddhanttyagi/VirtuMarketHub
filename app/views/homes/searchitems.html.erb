@@ -1,0 +1,22 @@
+<h1>it's searchitems page </h1>
+<div class="flex-container" style="margin-top: 100px">
+  <% @items.each do |item| %>
+    <div class="card" style="margin-right: 40px; margin-left: 75px; margin-bottom: 40px;border-radius: 10px;">
+      <% if item.image.present? %>
+          <%= image_tag(item.image, style: "width: 300px; height: 250px") %>
+      <% end %>
+      <h1><%= item.item_name %></h1>
+      <% random_number = rand(10..50).to_f / 10 %>
+      <p style="font-size: medium;"><%=random_number %>⭐</p>
+      <p class="price"><%= item.summary %></p>
+      <p class="price">₹<%= item.price %></p>
+      <p class="price">Remaining: <%= item.quantity %></p>
+      <%= form_tag({ controller: "items", action: "cart", method: "post" }) do %>
+        <%= hidden_field_tag :item_id, item.id %>
+        <%= label_tag :quantity, "Quantity:" %>
+        <%= number_field_tag :quantity, 1, min: 1, max: item.quantity, style: "border-radius: 10px; border: 2px solid lightgreen;" %>
+        <%= submit_tag "Add to Cart", class: "add-to-cart-button btn btn-primary", style: "margin-bottom:12px" %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

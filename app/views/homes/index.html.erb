@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <div class="navbar-brand"><%= link_to "HOME", root_path, style: "color: black; font-size: 20px; padding-left: 15px; text-decoration: none;" %></div>
+    <div class="navbar-brand"><%= link_to "HOME", root_path, style: "color: green; font-size: 20px; padding-left: 15px; text-decoration: none;text-decoration: underline;" %></div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -18,7 +18,7 @@
         </li>
         <li class="nav-item">
           <div class="nav-link active" aria-current="page">
-           <%= link_to "TRENDING", newshops_path, style: "color: black; font-size: 20px; padding-left: 15px; text-decoration: none;" %>
+           <%= link_to "TRENDING", trending_path, style: "color: black; font-size: 20px; padding-left: 15px; text-decoration: none;" %>
           </div>
         </li>
         <li class="nav-item">
@@ -26,30 +26,42 @@
            <%= link_to "CART🛒", carts_path, style: "color: black; font-size: 20px; padding-left: 15px; text-decoration: none;" %>
           </div>
         </li>
+        <% if @user==nil %>
+          <li class="nav-item">
+            <div class="nav-link active" aria-current="page">
+            <%= link_to "Login", login_path, class: "btn btn-primary" %>
+            </div>
+            </li>
+        <% end %>
+        <% if @user %>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 20px;color: black;margin-left:15px">
             EDIT PROFILE
-          </a> 
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">
+          </a>
+          
+            <ul class="dropdown-menu">
+            
+              <li><a class="dropdown-item" href="#">
+                <% if @user %>
+                    Logged in as: <%= @user.email %>
+                <% else %>
+                    <%= link_to "Login", login_path, style: "color: black; font-size: 20px; padding-left: 15px; text-decoration: none;" %>
+                    <hr>
+                    <%= link_to "Signup", signup_path, style: "color: black; font-size: 20px; padding-left: 15px; text-decoration: none;" %>
+                    <hr>
+                <% end %> 
+              </a></li>
               <% if @user %>
-                  Logged in as: <%= @user.email %>
-               <% else %>
-                  <%= link_to "Login", login_path, style: "color: black; font-size: 20px; padding-left: 15px; text-decoration: none;" %>
-                  <hr>
-                  <%= link_to "Signup", signup_path, style: "color: black; font-size: 20px; padding-left: 15px; text-decoration: none;" %>
-                  <hr>
-               <% end %> 
-            </a></li>
-            <% if @user %>
-               <li class="dropdown-item">
-               <%= button_to "Logout", logout_path, method: :delete, class: "btn btn-primary" %>
-               <hr>
-            </li>
-            <% end %>
-            <li><%= link_to "VIEW PROFILE", profile_path, style: "color: black; font-size: 20px; padding-left: 15px; text-decoration: none;" %></li>
-          </ul>
+                <li class="dropdown-item">
+                <%= button_to "Logout", logout_path, method: :delete, class: "btn btn-primary" %>
+                <hr>
+                </li>
+              <% end %>
+              <li><%= link_to "VIEW PROFILE", profile_path, style: "color: black; font-size: 20px; padding-left: 15px; text-decoration: none;" %></li>
+            </ul>
+            
         </li>
+        <% end %>
       </ul>
       <%# <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -61,7 +73,7 @@
       <%= form_tag('search', method: 'post') do %>
         <div class="d-flex flex-row justify-content-center align-items-center">
           <div class="mr-2">
-            <%= text_field_tag 'shop_name', nil, class: 'form-control', placeholder: 'Search shop here' %>
+            <%= text_field_tag 'shop_name', nil, class: 'form-control', placeholder: 'Search shop and items' %>
           </div>
           <div>
             <%= submit_tag 'Search', class: 'btn btn-primary' %>
@@ -73,6 +85,7 @@
     </div>
   </div>
 </nav>
+
 
 <div id="carouselExample" class="carousel slide">
   <div class="carousel-inner">
@@ -102,7 +115,35 @@
   </button>
 </div>
 
-<h2 style="text-align:center">Product Card</h2>
+<div>
+  <img src="<%= asset_path("offers-image.png") %>" class="d-block w-100" alt="..." height="200px">
+</div>
+
+<div style="display:flex; flex-direction: row">
+  <img src="<%= asset_path("free-1.png") %>" class="d-block w-30" alt="..." height="200px" margin-right="140px">
+  <img src="<%= asset_path("free-2.png") %>" class="d-block w-30" alt="..." height="200px">
+  <img src="<%= asset_path("free-3.png") %>" class="d-block w-30" alt="..." height="200px">
+</div>
+<div><h1 style="color:blue">Trending items 📈</h1></div>
+<div class="flex-container">
+  <%cnt=0%>
+  <% @items.each do |item| %>
+    <div class="card" style="margin-left: 10px; margin-bottom: 40px;">
+      <% if item.image.present? %>
+        <%= link_to shop_items_path(shop_id: item.shop_id), style: "text-decoration: none; color: inherit;" do %>
+          <%= image_tag(item.image, style: "width: 300px; height: 250px") %>
+        <% end %>
+      <% end %>
+      <% random_number = rand(10..50).to_f / 10 %>
+      <h1><%= item.item_name %><p style="font-size: medium;"><%=random_number %>⭐</p></h1>
+      <p class="price"><%= item.summary %></p>
+      
+      <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
+    </div>
+  <% end %>
+</div>
+
+<h2 style="text-align:center">Listed Shops</h2>
 
 <div class="flex-container">
   <% @shops.each do |shop| %>
@@ -112,8 +153,10 @@
           <%= image_tag(shop.shop_image, style: "width: 300px; height: 250px") %>
         <% end %>
       <% end %>
-      <h1><%= shop.shop_name %></h1>
+      <% random_number = rand(10..50).to_f / 10 %>
+      <h1><%= shop.shop_name %><p style="font-size: medium;"><%=random_number %>⭐</p></h1>
       <p class="price"><%= shop.shop_summary %></p>
+      
       <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
     </div>
   <% end %>

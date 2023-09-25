@@ -6,6 +6,7 @@ class HomesController < ApplicationController
             @user=User.find_by(id: session[:user_id])
         end
         @shops=Shop.all
+        @items=Item.all
     end
     def sellersindex
         @checker3=false
@@ -75,15 +76,34 @@ class HomesController < ApplicationController
     def search
         shop_id=params[:id]
         @shop=Shop.find(shop_id)
+        item_name=params[:item_name]
+        @itemsMatch=Item.where('lower(item_name) LIKE ?', "%#{item_name.downcase}%")
+        @items=Item.where(shop_id: shop_id)
+        
+        
+
+    end
+
+    def searchitems
+        item_name=params[:item_name]
+        
+        
     end
 
     def searchpost
         shop_name=params[:shop_name]
-        shop=Shop.find_by(shop_name: shop_name)
+        item_name=params[:shop_name]
+        shop = Shop.find_by('lower(shop_name) LIKE ?', "%#{shop_name.downcase}%")
         if shop
-            redirect_to searchshop_path(id: shop.id)
+            redirect_to searchshop_path(id: shop.id, item_name: item_name)
+        
+        else
+            redirect_to searchitems_path(item_name: item_name)
         end
         
+
+        
+
     end
     
 

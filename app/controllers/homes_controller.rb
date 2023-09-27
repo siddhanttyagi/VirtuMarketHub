@@ -93,15 +93,21 @@ class HomesController < ApplicationController
     end
 
     def searchpost
-        shop_name=params[:shop_name]
         item_name=params[:shop_name]
-        shop = Shop.find_by('lower(shop_name) LIKE ?', "%#{shop_name.downcase}%")
-        if shop
-            redirect_to searchshop_path(id: shop.id, item_name: item_name)
-        
-        else
-            redirect_to searchitems_path(item_name: item_name)
+        @items=Item.where('lower(item_name) LIKE ?', "%#{item_name.downcase}%")
+        respond_to do |format|
+            format.turbo_stream do
+                render turbo_stream: turbo_stream.update("search_results",partial: "homes/search_results", locals: {items: @items})
+            end
         end
+        # item_name=params[:shop_name]
+        # shop = Shop.find_by('lower(shop_name) LIKE ?', "%#{shop_name.downcase}%")
+        # if shop
+        #     redirect_to searchshop_path(id: shop.id, item_name: item_name)
+        
+        # else
+        #     redirect_to searchitems_path(item_name: item_name)
+        # end
         
 
         

@@ -1,4 +1,6 @@
-<%= items.count %>
-<% items.each do |item|%>
-    <%= item.item_name%>
+
+<%if item_name !=""%>
+    <% items.each do |item|%>
+        <div><%= item.item_name%></div>
+    <%end%>
 <%end%>

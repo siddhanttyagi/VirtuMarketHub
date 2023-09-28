@@ -69,18 +69,19 @@
       </form> %>
       <!-- app/views/shops/new.html.erb -->
 
-
-      <%= form_tag('search', method: 'post') do %>
-        <div class="d-flex flex-row justify-content-center align-items-center">
-          <div class="mr-2">
-            <%= text_field_tag 'shop_name', nil, class: 'form-control', placeholder: 'Search shop and items',oninput: "this.form.requestSubmit()" %>
+      <div style="display:flex;flex-direction:column">
+        <%= form_tag('search', method: 'post') do %>
+          <div class="d-flex flex-row justify-content-center align-items-center">
+            <div class="mr-2">
+              <%= text_field_tag 'shop_name', nil, class: 'form-control', placeholder: 'Search shop and items',oninput: "this.form.requestSubmit()" %>
+            </div>
+            <div>
+              <%= submit_tag 'Search', class: 'btn btn-primary' %>
+            </div>
           </div>
-          <div>
-            <%= submit_tag 'Search', class: 'btn btn-primary' %>
-          </div>
-        </div>
-      <% end %>
-      <div id="search_results">search results</div>
+        <% end %>
+        <div id="search_results">search results</div>
+      </div>
 
 
     </div>

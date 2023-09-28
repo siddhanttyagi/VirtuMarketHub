@@ -9,8 +9,14 @@
         <hr>
     <%end%>
     <% items_category2.each do |item|%>
-        <div style="margin-left:4px;margin-top:10px; font-size:21px"><%= link_to item, root_path(category2: item), style: "margin-left:4px;margin-top:10px; font-size:21px;color: black; text-decoration: none;" %>
-</div>
+        <div style="margin-left:4px;margin-top:10px; font-size:21px"><%= link_to item, root_path(category2: item), style: "margin-left:4px;margin-top:10px; font-size:21px;color: black; text-decoration: none;" %></div>
         <hr>
     <%end%>
 <%end%>
+    <%if shop_name !=""%>
+        <% shops.each do |shop|%>
+            <div style="margin-left:4px;margin-top:10px; font-size:21px"><%= link_to shop.shop_name, root_path(shop_name: shop.shop_name), style: "margin-left:4px;margin-top:10px; font-size:21px;color: black; text-decoration: none;" %></div>
+            <hr>
+        <%end%>
+    <%end%>
+

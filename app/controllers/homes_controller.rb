@@ -11,6 +11,10 @@ class HomesController < ApplicationController
             @items1=Item.where(category1: @items.first.category1)
             @items2=Item.where(category2: @items.first.category2)
 
+        elsif params[:shop_name]
+            @shops=Shop.where(shop_name: params[:shop_name])
+            @items=Item.where(shop_id: @shops.first.id)
+
         else
             if session[:user_id]
                 @user=User.find_by(id: session[:user_id])
@@ -105,6 +109,8 @@ class HomesController < ApplicationController
 
     def searchpost
         item_name=params[:shop_name]
+        shop_name=params[:shop_name]
+        @shops=Shop.where('lower(shop_name) LIKE ?', "%#{shop_name.downcase}%")
         @items=Item.where('lower(item_name) LIKE ?', "%#{item_name.downcase}%")
         @items_category1=Item.where('lower(category1) LIKE ?', "%#{item_name.downcase}%")
         category1=[]
@@ -120,7 +126,7 @@ class HomesController < ApplicationController
         category2=category2.uniq
         respond_to do |format|
             format.turbo_stream do
-                render turbo_stream: turbo_stream.update("search_results",partial: "homes/search_results", locals: {items: @items, item_name: item_name, items_category1: category1, items_category2: category2})
+                render turbo_stream: turbo_stream.update("search_results",partial: "homes/search_results", locals: {items: @items, item_name: item_name, items_category1: category1, items_category2: category2, shop_name: shop_name, shops: @shops})
             end
         end
         

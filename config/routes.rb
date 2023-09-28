@@ -42,5 +42,6 @@ Rails.application.routes.draw do
   get 'root_path/:category2', to: 'homes#index', as: :root_with_params_category2
   get 'root_path/:category1', to: 'homes#index', as: :root_with_params_category1
   get 'root_path/:item_name', to: 'homes#index', as: :root_with_params_item_name
+  get 'root_path/:shop_name', to: 'homes#index', as: :root_with_params_shop_name
   
 end

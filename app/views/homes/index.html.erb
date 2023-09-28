@@ -69,10 +69,10 @@
       </form> %>
       <!-- app/views/shops/new.html.erb -->
 
-      <div style="display:flex;flex-direction:column">
+      <div style="display:flex;flex-direction:column;position: absolute; top: 0; left: 990px; z-index: 1000;margin-top:10px">
         <%= form_tag('search', method: 'post') do %>
           <div class="d-flex flex-row justify-content-center align-items-center">
-            <div class="mr-2">
+            <div class="mr-5" style="width:180px;margin-left:0px">
               <%= text_field_tag 'shop_name', nil, class: 'form-control', placeholder: 'Search shop and items',oninput: "this.form.requestSubmit()" %>
             </div>
             <div>
@@ -80,7 +80,7 @@
             </div>
           </div>
         <% end %>
-        <div id="search_results">search results</div>
+        <div id="search_results" style="background-color:white"></div>
       </div>
 
 
@@ -139,7 +139,6 @@
       <% random_number = rand(10..50).to_f / 10 %>
       <h1><%= item.item_name %><p style="font-size: medium;"><%=random_number %>⭐</p></h1>
       <p class="price"><%= item.summary %></p>
-      
       <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
     </div>
   <% end %>

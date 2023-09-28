@@ -1,15 +1,16 @@
 
 <%if item_name !=""%>
     <% items.each do |item|%>
-        <div style="margin-left:4px;margin-top:10px; font-size:21px"><%= item.item_name%></div>
+        <div style="margin-left:4px;margin-top:10px; font-size:21px"><%= link_to item.item_name, root_path(item_name: item.item_name), style: "margin-left:4px;margin-top:10px; font-size:21px;color: black; text-decoration: none;" %></div>
         <hr>
     <%end%>
     <% items_category1.each do |item|%>
-        <div style="margin-left:4px;margin-top:10px; font-size:21px"><%= item %></div>
+        <div style="margin-left:4px;margin-top:10px; font-size:21px"><%= link_to item, root_path(category1: item), style: "margin-left:4px;margin-top:10px; font-size:21px;color: black; text-decoration: none;" %></div>
         <hr>
     <%end%>
     <% items_category2.each do |item|%>
-        <div style="margin-left:4px;margin-top:10px; font-size:21px"><%= item %></div>
+        <div style="margin-left:4px;margin-top:10px; font-size:21px"><%= link_to item, root_path(category2: item), style: "margin-left:4px;margin-top:10px; font-size:21px;color: black; text-decoration: none;" %>
+</div>
         <hr>
     <%end%>
 <%end%>

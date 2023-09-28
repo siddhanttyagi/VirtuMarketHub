@@ -39,5 +39,8 @@ Rails.application.routes.draw do
   get 'sellersorder', to: 'sellers#myorder'
   get 'searchitems', to: 'homes#searchitems'
   root "homes#index"
+  get 'root_path/:category2', to: 'homes#index', as: :root_with_params_category2
+  get 'root_path/:category1', to: 'homes#index', as: :root_with_params_category1
+  get 'root_path/:item_name', to: 'homes#index', as: :root_with_params_item_name
   
 end

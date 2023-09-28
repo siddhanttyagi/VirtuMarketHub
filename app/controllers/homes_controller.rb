@@ -2,11 +2,22 @@ class HomesController < ApplicationController
 
     
     def index
-        if session[:user_id]
-            @user=User.find_by(id: session[:user_id])
+        if params[:category2]
+            @items=Item.where(category2: params[:category2])
+        elsif params[:category1]
+            @items=Item.where(category1: params[:category1])
+        elsif params[:item_name]
+            @items=Item.where(item_name: params[:item_name])
+            @items1=Item.where(category1: @items.first.category1)
+            @items2=Item.where(category2: @items.first.category2)
+
+        else
+            if session[:user_id]
+                @user=User.find_by(id: session[:user_id])
+            end
+            @shops=Shop.all
+            @items=Item.all
         end
-        @shops=Shop.all
-        @items=Item.all
     end
     def sellersindex
         @checker3=false

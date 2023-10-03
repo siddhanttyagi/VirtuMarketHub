@@ -26,6 +26,9 @@ class ItemsController < ApplicationController
 
     def carts
         if session[:user_id]
+            
+            @user=User.find_by(id: session[:user_id])
+            
             @data=session[:cart_data]
             item_ids=session[:cart_data].keys
             @items=Item.where(id: item_ids)

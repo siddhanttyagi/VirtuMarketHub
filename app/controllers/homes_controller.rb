@@ -22,6 +22,7 @@ class HomesController < ApplicationController
             @shops=Shop.all
             @items=Item.all
             @rating_map={}
+            @shopRating_map={}
             @items.each do |item|
                 itemratings=Rating.where(item_id: item.id)
                 sum=0
@@ -33,8 +34,23 @@ class HomesController < ApplicationController
                 @rating_map[item.id]=(sum.to_f/count).round(1)
             end
             session[:rating_map] = @rating_map
+            @shops.each do |shop|
+                allitems=Item.where(shop_id: shop.id)
+                sum=0
+                count=0
+                allitems.each do |item|
+                    sum+=@rating_map[item.id].to_i
+                    count+=1
+                end
+                @shopRating_map[shop.id]=(sum.to_f/count).round(1)
+            end
+            puts @shopRating_map
+            # puts @rating_map
 
-            puts @rating_map
+            
+
+
+
         end
     end
     def sellersindex

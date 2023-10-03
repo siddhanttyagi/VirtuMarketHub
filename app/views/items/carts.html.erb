@@ -99,7 +99,7 @@
                 <%= image_tag(item.image, style: "width: 300px; height: 250px") %>
             <% end %>
             <h1><%= item.item_name %></h1>
-            <p class="price"><%= item.summary %></p>
+            <p class="price"><%#= item.summary %></p>
             <p class="price">₹<%= item.price %></p>
             <p class="price">x <%= @data[item.id.to_s]%></p>
             <% total_amount += (item.price.to_i) * (@data[item.id.to_s].to_i) %>

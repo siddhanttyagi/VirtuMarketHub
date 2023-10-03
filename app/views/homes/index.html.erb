@@ -11,7 +11,7 @@
         <% end %>
         <% random_number = rand(10..50).to_f / 10 %>
         <h1><%= item.item_name %><p style="font-size: medium;"><%=random_number %>⭐</p></h1>
-        <p class="price"><%= item.summary %></p>
+        <p class="price"><%#= item.summary %></p>
         <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
       </div>
     <% end %>
@@ -28,7 +28,7 @@
         <% end %>
         <% random_number = rand(10..50).to_f / 10 %>
         <h1><%= item.item_name %><p style="font-size: medium;"><%=random_number %>⭐</p></h1>
-        <p class="price"><%= item.summary %></p>
+        <p class="price"><%#= item.summary %></p>
         <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
       </div>
     <% end %>
@@ -45,7 +45,7 @@
         <% end %>
         <% random_number = rand(10..50).to_f / 10 %>
         <h1><%= item.item_name %><p style="font-size: medium;"><%=random_number %>⭐</p></h1>
-        <p class="price"><%= item.summary %></p>
+        <p class="price"><%#= item.summary %></p>
         <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
       </div>
     <% end %>
@@ -62,7 +62,7 @@
         <% end %>
         <% random_number = rand(10..50).to_f / 10 %>
         <h1><%= item.item_name %><p style="font-size: medium;"><%=random_number %>⭐</p></h1>
-        <p class="price"><%= item.summary %></p>
+        <p class="price"><%#= item.summary %></p>
         <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
       </div>
     <% end %>
@@ -78,7 +78,7 @@
         <% end %>
         <% random_number = rand(10..50).to_f / 10 %>
         <h1><%= item.item_name %><p style="font-size: medium;"><%=random_number %>⭐</p></h1>
-        <p class="price"><%= item.summary %></p>
+        <p class="price"><%#= item.summary %></p>
         <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
       </div>
     <% end %>
@@ -113,7 +113,7 @@
         <% end %>
         <% random_number = rand(10..50).to_f / 10 %>
         <h1><%= item.item_name %><p style="font-size: medium;"><%=random_number %>⭐</p></h1>
-        <p class="price"><%= item.summary %></p>
+        <p class="price"><%#= item.summary %></p>
         <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
       </div>
     <% end %>
@@ -258,9 +258,9 @@
             <%= image_tag(item.image, style: "width: 300px; height: 250px") %>
           <% end %>
         <% end %>
-        <% random_number = rand(10..50).to_f / 10 %>
-        <h1><%= item.item_name %><p style="font-size: medium;"><%=random_number %>⭐</p></h1>
-        <p class="price"><%= item.summary %></p>
+        
+        <h1><%= item.item_name %><p style="font-size: medium;"><%= @rating_map[item.id]%>⭐</p></h1>
+        <p class="price"><%#= item.summary %></p>
         <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
       </div>
     <% end %>

@@ -21,6 +21,20 @@ class HomesController < ApplicationController
             end
             @shops=Shop.all
             @items=Item.all
+            @rating_map={}
+            @items.each do |item|
+                itemratings=Rating.where(item_id: item.id)
+                sum=0
+                count=0
+                itemratings.each do |items|
+                    sum=sum+items.rating
+                    count+=1
+                end
+                @rating_map[item.id]=(sum.to_f/count).round(1)
+            end
+            session[:rating_map] = @rating_map
+
+            puts @rating_map
         end
     end
     def sellersindex
@@ -125,8 +139,10 @@ class HomesController < ApplicationController
         end
         category2=category2.uniq
         respond_to do |format|
+            
             format.turbo_stream do
                 render turbo_stream: turbo_stream.update("search_results",partial: "homes/search_results", locals: {items: @items, item_name: item_name, items_category1: category1, items_category2: category2, shop_name: shop_name, shops: @shops})
+                
             end
         end
         

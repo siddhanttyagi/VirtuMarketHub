@@ -96,9 +96,9 @@
           <%= image_tag(item.image, style: "width: 300px; height: 250px") %>
       <% end %>
       <h1><%= item.item_name %></h1>
-      <% random_number = rand(10..50).to_f / 10 %>
-      <p style="font-size: medium;"><%=random_number %>⭐</p>
-      <p class="price"><%= item.summary %></p>
+      
+      <p style="font-size: medium;"><%=@rating_map[(item.id).to_s] %>⭐</p>
+      <p class="price"><%#= item.summary %></p>
       <p class="price">₹<%= item.price %></p>
       <p class="price">Remaining: <%= item.quantity %></p>
       <%= form_tag({ controller: "items", action: "cart", method: "post" }) do %>

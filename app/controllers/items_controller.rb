@@ -6,6 +6,8 @@ class ItemsController < ApplicationController
             @user=User.find_by(id: session[:user_id])
         end
         @items=Item.where(shop_id: params[:shop_id])
+        @rating_map = session[:rating_map]
+        puts @rating_map
         session[:tempshop_id]=params[:shop_id]
     end
 

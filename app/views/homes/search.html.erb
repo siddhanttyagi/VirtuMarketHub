@@ -22,7 +22,7 @@
       <h1><%= item.item_name %></h1>
       <% random_number = rand(10..50).to_f / 10 %>
       <p style="font-size: medium;"><%=random_number %>⭐</p>
-      <p class="price"><%= item.summary %></p>
+      <p class="price"><%#= item.summary %></p>
       <p class="price">₹<%= item.price %></p>
       <p class="price">Remaining: <%= item.quantity %></p>
       <%= form_tag({ controller: "items", action: "cart", method: "post" }) do %>
@@ -47,7 +47,7 @@
       <h1><%= item.item_name %></h1>
       <% random_number = rand(10..50).to_f / 10 %>
       <p style="font-size: medium;"><%=random_number %>⭐</p>
-      <p class="price"><%= item.summary %></p>
+      <p class="price"><%#= item.summary %></p>
       <p class="price">₹<%= item.price %></p>
       <p class="price">Remaining: <%= item.quantity %></p>
       <%= form_tag({ controller: "items", action: "cart", method: "post" }) do %>

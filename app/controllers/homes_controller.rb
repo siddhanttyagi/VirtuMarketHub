@@ -44,6 +44,7 @@ class HomesController < ApplicationController
                 end
                 @shopRating_map[shop.id]=(sum.to_f/count).round(1)
             end
+            
             puts @shopRating_map
             # puts @rating_map
 
@@ -174,6 +175,10 @@ class HomesController < ApplicationController
 
         
 
+    end
+
+    def locationform
+        
     end
     
 

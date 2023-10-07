@@ -122,11 +122,24 @@
 
 <%else%>
   
-  <div id="location-form" style="display: none;">
+  <div id="location-form" style="width:500px;height:300px;background-color:white;padding:20px;border:solid black;border-radius: 20px;position:fixed; top:200px;left:400px;z-index:5000;">
     <!-- Your location form content here -->
-    <button id="hide-location-form">Hide Location Form</button>
-    <h1>My message title</h1>
-    <p>My message content</p>
+    <button id="hide-location-form" style="border:none;background-color:white;position:relative; left:442px; bottom: 18px">X</button>
+    <%= form_with url: currentlocation_path, method: :post do |form| %>
+      <div class="form-group">
+        <%= form.label :city, "Select City" %>
+        <%= form.select :city, ["--",'Delhi', 'Haridwar', 'Bangalore', 'Pune', 'Mumbai'], {include_blank: 'Select a city'}, class: 'form-control', id: 'city-select' %>
+      </div>
+      <div class="form-group" id="area-group" style="display: none;">
+        <%= form.label :area, "Select Area" %>
+        <%= form.select :area, [], class: 'form-control', id: 'area-select' %>
+      </div>
+      <%= form.submit "Change location", class: 'btn btn-primary', style: "position:relative;top:20px" %>
+    <% end %>
+
+
+    
+    
   </div>
   
   <nav class="navbar navbar-expand-lg bg-body-tertiary">

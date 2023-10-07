@@ -173,12 +173,13 @@ class HomesController < ApplicationController
         # end
         
 
-        
-
     end
 
     def locationform
         
+    end
+
+    def currentlocation
     end
     
 

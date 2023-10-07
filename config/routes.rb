@@ -45,5 +45,6 @@ Rails.application.routes.draw do
   get 'root_path/:shop_name', to: 'homes#index', as: :root_with_params_shop_name
 
   get 'locationform', to: 'homes#locationform'
+  post 'currentlocation', to: 'homes#currentlocation'
   
 end

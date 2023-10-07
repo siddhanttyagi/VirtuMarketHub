@@ -41,3 +41,43 @@ hideLocationFormButton.addEventListener("click", function (e) {
     
 });
 });
+
+
+  // Define an object to store city-to-area mappings
+  const cityToAreas = {
+    Delhi: ['Mohan Nagar', 'Shakti Nagar'],
+    Haridwar: ['kankhal', 'upper road'],
+    Bangalore: ['kormangla', 'jp nagar'],
+    Pune: ['kotwali ', 'arya nagar chowk'],
+    Mumbai: ['bomabay road', 'mansoor nagar'],
+  };
+
+  // Get references to the city and area select elements
+  const citySelect = document.getElementById('city-select');
+  const areaSelect = document.getElementById('area-select');
+  const areaGroup = document.getElementById('area-group');
+
+  // Event listener to update the area options when the city is selected
+  citySelect.addEventListener('change', function () {
+    const selectedCity = citySelect.value;
+    const areas = cityToAreas[selectedCity] || [];
+
+    // Clear the current options
+    areaSelect.innerHTML = '';
+
+    // Add new options for the selected city
+    areas.forEach((area) => {
+      const option = document.createElement('option');
+      option.text = area;
+      areaSelect.add(option);
+    });
+
+    // Show/hide the area select based on whether a city is selected
+    if (selectedCity) {
+      areaGroup.style.display = 'block';
+    } else {
+      areaGroup.style.display = 'none';
+    }
+  });
+
+

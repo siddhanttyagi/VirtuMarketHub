@@ -42,42 +42,55 @@ hideLocationFormButton.addEventListener("click", function (e) {
 });
 });
 
-
-  // Define an object to store city-to-area mappings
-  const cityToAreas = {
-    Delhi: ['Mohan Nagar', 'Shakti Nagar'],
-    Haridwar: ['kankhal', 'upper road'],
-    Bangalore: ['kormangla', 'jp nagar'],
-    Pune: ['kotwali ', 'arya nagar chowk'],
-    Mumbai: ['bomabay road', 'mansoor nagar'],
+document.addEventListener("turbo:load", function () {
+  const citySelect = document.getElementById('city-select');
+  const areaContainer = document.getElementById('area-container');
+  
+  // Define areas for each city
+  const cityAreas = {
+    'Delhi': ['Area1', 'Area2'],
+    'Haridwar': ['Area3', 'Area4'],
+    'Bangalore': ['Area5', 'Area6'],
+    'Pune': ['Area7', 'Area8'],
+    'Mumbai': ['Area9', 'Area10'],
   };
 
-  // Get references to the city and area select elements
-  const citySelect = document.getElementById('city-select');
-  const areaSelect = document.getElementById('area-select');
-  const areaGroup = document.getElementById('area-group');
-
-  // Event listener to update the area options when the city is selected
-  citySelect.addEventListener('change', function () {
+  // Function to update the area options
+  function updateAreaOptions() {
     const selectedCity = citySelect.value;
-    const areas = cityToAreas[selectedCity] || [];
-
-    // Clear the current options
+    const areas = cityAreas[selectedCity] || [];
+    const areaSelect = areaContainer.querySelector('select');
+    
+    // Clear existing options
     areaSelect.innerHTML = '';
 
-    // Add new options for the selected city
-    areas.forEach((area) => {
+    // Add new options
+    areas.forEach(area => {
       const option = document.createElement('option');
+      option.value = area;
       option.text = area;
-      areaSelect.add(option);
+      areaSelect.appendChild(option);
     });
 
-    // Show/hide the area select based on whether a city is selected
-    if (selectedCity) {
-      areaGroup.style.display = 'block';
-    } else {
-      areaGroup.style.display = 'none';
-    }
-  });
+    // Store the selected city in localStorage
+    localStorage.setItem('selectedCity', selectedCity);
+  }
+
+  // Initialize the city select with the stored value from localStorage
+  const storedCity = localStorage.getItem('selectedCity');
+  if (storedCity) {
+    citySelect.value = storedCity;
+  }
+
+  // Initial update when the page loads
+  updateAreaOptions();
+
+  // Update options when the city select value changes
+  citySelect.addEventListener('change', updateAreaOptions);
+});
+
+
+
+
 
 

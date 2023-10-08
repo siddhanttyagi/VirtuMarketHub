@@ -48,11 +48,11 @@ document.addEventListener("turbo:load", function () {
   
   // Define areas for each city
   const cityAreas = {
-    'Delhi': ['Area1', 'Area2'],
-    'Haridwar': ['Area3', 'Area4'],
-    'Bangalore': ['Area5', 'Area6'],
-    'Pune': ['Area7', 'Area8'],
-    'Mumbai': ['Area9', 'Area10'],
+    'Delhi': ['mohan nagar', 'cannaught place'],
+    'Haridwar': ['shakti nagar', 'arya nagar chowk'],
+    'Bangalore': ['kormangla', 'jp nagar'],
+    'Pune': ['seva road', 'deva chowk'],
+    'Mumbai': ['bombay road', 'sevai nagar'],
   };
 
   // Function to update the area options

@@ -4,16 +4,34 @@ class HomesController < ApplicationController
     def index
         if params[:category2]
             @items=Item.where(category2: params[:category2])
+            @rating_map=session[:rating_map]
         elsif params[:category1]
             @items=Item.where(category1: params[:category1])
+            @rating_map=session[:rating_map]
         elsif params[:item_name]
             @items=Item.where(item_name: params[:item_name])
             @items1=Item.where(category1: @items.first.category1)
             @items2=Item.where(category2: @items.first.category2)
+            @rating_map=session[:rating_map]
+            
 
         elsif params[:shop_name]
             @shops=Shop.where(shop_name: params[:shop_name])
             @items=Item.where(shop_id: @shops.first.id)
+            @rating_map=session[:rating_map]
+            @shopRating_map=session[:shopRating_map]
+        
+        elsif params[:city] && params[:area]
+            
+            if session[:user_id]
+                @user=User.find_by(id: session[:user_id])
+            end
+            @shops=Shop.where(city: params[:city], area: params[:area])
+            @items=Item.joins(:shop).where(shops:{ city: params[:city], area: params[:area] })
+            @rating_map=session[:rating_map]
+            @shopRating_map=session[:shopRating_map]
+            puts "rating map= #{@rating_map}"
+            
 
         else
             if session[:user_id]
@@ -33,7 +51,6 @@ class HomesController < ApplicationController
                 end
                 @rating_map[item.id]=(sum.to_f/count).round(1)
             end
-            session[:rating_map] = @rating_map
             @shops.each do |shop|
                 allitems=Item.where(shop_id: shop.id)
                 sum=0
@@ -46,6 +63,7 @@ class HomesController < ApplicationController
             end
             
             puts @shopRating_map
+            session[:shopRating_map]=@shopRating_map
             # puts @rating_map
 
             
@@ -177,9 +195,13 @@ class HomesController < ApplicationController
 
     def locationform
         
+        
     end
 
     def currentlocation
+        session[:city]=params[:city]
+        session[:area]=params[:area]
+        redirect_to root_path(city: params[:city], area: params[:area])
     end
     
 

@@ -30,7 +30,6 @@ class HomesController < ApplicationController
             @items=Item.joins(:shop).where(shops:{ city: params[:city], area: params[:area] })
             @rating_map=session[:rating_map]
             @shopRating_map=session[:shopRating_map]
-            puts "rating map= #{@rating_map}"
             
 
         else
@@ -51,6 +50,7 @@ class HomesController < ApplicationController
                 end
                 @rating_map[item.id]=(sum.to_f/count).round(1)
             end
+            session[:rating_map]=@rating_map
             @shops.each do |shop|
                 allitems=Item.where(shop_id: shop.id)
                 sum=0

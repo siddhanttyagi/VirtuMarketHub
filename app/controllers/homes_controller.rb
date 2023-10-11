@@ -9,10 +9,11 @@ class HomesController < ApplicationController
             @items=Item.where(category1: params[:category1])
             @rating_map=session[:rating_map]
         elsif params[:item_name]
+            @rating_map=session[:rating_map]
             @items=Item.where(item_name: params[:item_name])
             @items1=Item.where(category1: @items.first.category1)
             @items2=Item.where(category2: @items.first.category2)
-            @rating_map=session[:rating_map]
+            
             
 
         elsif params[:shop_name]

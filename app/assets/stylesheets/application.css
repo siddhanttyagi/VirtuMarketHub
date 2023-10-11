@@ -36,4 +36,110 @@
 .cancel-button:hover {
     background-color: #2640fe;
 }
+
+.form-control::placeholder {
+    color: #999; /* Change the color to your desired color */
+    font-style: italic; /* Italicize the text if you prefer */
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+
+.logged-text{
+    font-weight: 700;
+    color: green;
+}
+
+.email-log{
+    font-weight: 700;
+    color: #9f5656; /* Change the color to your desired color */
+    font-style: italic; /* Italicize the text if you prefer */
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+.profile-v{
+    font-weight: 700;
+    font-size: 22px;
+    margin-left: 20px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: rgb(49, 46, 46);
+}
+
+.text-deco{
+    font-weight: 700;
+    font-size: 22px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: white;
+}
+
+.offer-r{
+    font-size: 17px;
+    font-weight: 600;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    position: relative;
+    bottom: 15px;
+    color: white;
+}
+
+
+.wrapper{
+    max-height: 400px;
+    border:1px solid #ddd;
+    display: flex;
+    overflow-x: auto;
+}
+
+.wrapper::-webkit-scrollbar{
+    width: 0;
+}
+.wrapper .item{
+    min-width: 200px;
+    height: 300px;
+
+    line-height: 110px;
+    text-align: center;
+    background-color: #ddd ;
+    margin-right: 2px;
+}
+
+
+
+  .carousel-container {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .carousel-slide {
+    flex: 0 0 100%; /* Each slide takes 100% of the container's width */
+    transition: transform 0.3s ease;
+    display: none; /* Hide all slides initially */
+  }
+
+  .carousel-slide.active {
+    display: block; /* Display the active slide */
+  }
+
+  .carousel-slide img {
+    width: 100%;
+    height: auto;
+  }
+
+  .first-one-div{
+    font-weight: 700;
+    font-size: 30px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin:0;
+    
+  }
+  .second-one-div{
+    font-weight: 600;
+    font-size:20px;
+    margin-left:2px;
+  }
+
+  .dfr{
+    height: 200px;
+    width:200px;
+  }
+
+
   

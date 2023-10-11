@@ -1,93 +1,101 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <div class="navbar-brand"><%= link_to "HOME", root_path, style: "color: black; font-size: 20px; padding-left: 15px; text-decoration: none;" %></div>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <div class="nav-link active" aria-current="page">
-           <%= link_to "OFFERS", offers_path, style: "color: black; font-size: 20px; padding-left: 15px; text-decoration: none;" %>
-          </div>
-        </li>
-        <li class="nav-item">
-          <div class="nav-link active" aria-current="page">
-           <%= link_to "NEW", newshops_path, style: "color: black; font-size: 20px; padding-left: 15px; text-decoration: none;" %>
-          </div>
-        </li>
-        <li class="nav-item">
-          <div class="nav-link active" aria-current="page">
-           <%= link_to "TRENDING", trending_path, style: "color: black; font-size: 20px; padding-left: 15px; text-decoration: none;" %>
-          </div>
-        </li>
-        <li class="nav-item">
-          <div class="nav-link active" aria-current="page">
-           <%= link_to "CART🛒", carts_path, style: "color: green; font-size: 20px; padding-left: 15px; text-decoration: underline;" %>
-          </div>
-        </li>
-        <% if @user==nil %>
-          <li class="nav-item">
-            <div class="nav-link active" aria-current="page">
-            <%= link_to "Login", login_path, class: "btn btn-primary" %>
-            </div>
-            </li>
-        <% end %>
-        <% if @user %>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 20px;color: black;margin-left:15px">
-            EDIT PROFILE
-          </a>
-          
-            <ul class="dropdown-menu">
-            
-              <li><a class="dropdown-item" href="#">
-                <% if @user %>
-                    Logged in as: <%= @user.email %>
-                <% else %>
-                    <%= link_to "Login", login_path, style: "color: black; font-size: 20px; padding-left: 15px; text-decoration: none;" %>
-                    <hr>
-                    <%= link_to "Signup", signup_path, style: "color: black; font-size: 20px; padding-left: 15px; text-decoration: none;" %>
-                    <hr>
-                <% end %> 
-              </a></li>
-              <% if @user %>
-                <li class="dropdown-item">
-                <%= button_to "Logout", logout_path, method: :delete, class: "btn btn-primary" %>
-                <hr>
-                </li>
-              <% end %>
-              <li><%= link_to "VIEW PROFILE", profile_path, style: "color: black; font-size: 20px; padding-left: 15px; text-decoration: none;" %></li>
-            </ul>
-            
-        </li>
-        <% end %>
-      </ul>
-      <%# <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form> %>
-      <!-- app/views/shops/new.html.erb -->
-
-
-      <%= form_tag('search', method: 'post') do %>
-        <div class="d-flex flex-row justify-content-center align-items-center">
-          <div class="mr-2">
-            <%= text_field_tag 'shop_name', nil, class: 'form-control', placeholder: 'Search shop here' %>
-          </div>
-          <div>
-            <%= submit_tag 'Search', class: 'btn btn-primary' %>
-          </div>
-        </div>
-      <% end %>
-
-
+<nav class="navbar navbar-expand-lg bg-body-tertiary" style="position:sticky;top:0px;z-index:5000;border-bottom: 5px solid green;">
+    <div style="">
+      <%= image_tag('logo-final.jpg', alt: 'Example Logo', style: 'height: 60px; width: 90px;') %>
     </div>
-  </div>
-</nav>
+
+    <div class="container-fluid">
+      <div class="navbar-brand" style="position:relative;bottom:1px"><%= link_to "HOME", root_path, style: "color: black;font-weight:700; font-size: 20px; padding-left: 15px;text-decoration: none;position:relative;top:4px" %></div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <div class="nav-link active" aria-current="page" style="position:relative; top:3px">
+            <%= link_to "OFFERS", offers_path, style: "color: black;font-weight:700; font-size: 20px; padding-left: 15px; text-decoration: none;" %>
+            </div>
+          </li>
+      <li>
+      <% if @user %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 20px;color: black;margin-left:15px;position:relative;top:3px">
+              <b>PROFILE</b>
+            </a>
+            
+              <ul class="dropdown-menu">
+              
+                <li><a class="dropdown-item" href="#">
+                  <% if @user %>
+                      <div style="display:flex;flex-direction:row;">
+                        <p class="logged-text" style="margin-right:5px;">Login as: </p> <p class="email-log"><%= @user.email %></p>
+                      </div>
+                  <% else %>
+                      <%= link_to "Login", login_path, style: "color: black; font-size: 20px; padding-left: 15px; text-decoration: none;" %>
+                      <hr>
+                      <%= link_to "Signup", signup_path, style: "color: black; font-size: 20px; padding-left: 15px; text-decoration: none;" %>
+                      <hr>
+                  <% end %> 
+                </a></li>
+                <% if @user %>
+                  <li class="dropdown-item">
+                  <%= button_to "Logout", logout_path, method: :delete, class: "btn btn-primary", style:"background-color:red;margin-bottom:10px;position:absolute;bottom:53px" %>
+                  <hr>
+                  </li>
+                <% end %>
+                <li><%= link_to "VIEW PROFILE", profile_path, style: "text-decoration:none;", class:"profile-v" %></li>
+              </ul>
+              
+          </li>
+          <% end %>
+    </li>
+          
+          <li class="nav-item" style="position:relative">
+            <div class="nav-link active" aria-current="page" style="position:relative;top:3px">
+            <%= link_to "CART🛒", carts_path, style: "color: green;font-weight:700; font-size: 20px; padding-left: 15px; text-decoration: underline;" %>
+            </div>
+          </li>
+          <% if @user==nil %>
+            <li class="nav-item">
+              <div class="nav-link active" aria-current="page">
+              <%= link_to "Login", login_path, class: "btn btn-primary", style:"background-color:green;" %>
+              </div>
+              </li>
+          <% end %>
+          
+        </ul>
+        
+        <div style="display:flex;flex-direction:column;position: absolute; top: 12px; left: 1035px; z-index: 1000;margin-top:10px">
+          <%= form_tag('search', method: 'post') do %>
+            <div class="d-flex flex-row justify-content-center align-items-center">
+              <div class="mr-5" style="width:300px;margin-left:0px">
+                <%= text_field_tag 'shop_name', nil, class: 'form-control', placeholder: '🔍 shop and items',oninput: "this.form.requestSubmit()", style:"border: 2px ridge green" %>
+              </div>
+              
+            </div>
+          <% end %>
+          <div id="search_results" style="background-color:white"></div>
+        </div>
+        <div style="display:flex;flex-direction:row;position:absolute;left:550px;top:27px;">
+          
+          <%= link_to image_tag("location_logo.png", alt: "Image Description",style:"height: 30px;", id:"show-location-form")%>
+          <%if session[:city] && session[:area]%>
+            <div style="color: #3a3d3a; font-style: italic;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"><%= "#{session[:area]}, #{session[:city]}" %></div>
+          <%end%>
+          
+        </div>
+
+
+      </div>
+    </div>
+    
+  </nav>
+
+
+
+
 <div style="display: flex;flex-direction:column;align-items: center;background-color: rgb(197, 154, 236);"><h1>ADDED ITEMS IN THE CART🛒</h1></div>
 <% if @tempshop_id %>
- <div><%= link_to "Go to items", shop_items_path(shop_id: @tempshop_id), class: "btn btn-primary" %></div>
+ <div style="position:absolute;bottom:475px;"><%= link_to "MENU🔙", shop_items_path(shop_id: @tempshop_id), class: "", class:"first-one-div", style:"text-decoration:none;color:green" %></div>
 <%end%>
 <%total_amount=0%>
 <div class="flex-container" style="margin-top: 100px;">
@@ -112,8 +120,40 @@
 
 </div>
 <div style="display:flex;flex-direction:row-reverse;">
-<div style="margin-right: 30px;margin-top: 5px;"><%= link_to "Go to Payment", payment_path(data: @data, total_amount: total_amount), class: "btn btn-primary" %></div>
+<div style="position:fixed;top:500px;">
 <div style="background-color:rgb(144, 228, 144);height:50px;display:flex;flex-direction:row-reverse;margin-right:40px;padding-right:100px;margin-bottom: 50px;">
- <h1 style="font-size: 18px; font-weight: bold; color: #333;padding-left:50px;margin-top:10px;margin-left:10px">Total Amount : ₹<%= total_amount %></h1>
+ <h1 style="font-size: 18px; font-weight: bold; color: #333;padding-left:50px;margin-top:10px;margin-left:10px;width:fit-content;">Total Amount : ₹<%= total_amount %></h1>
+ </div>
+<div style="margin-right: 30px;margin-top: 5px;position:absolute;bottom:10px;right:20px;"><%= link_to "Go to Payment", payment_path(data: @data, total_amount: total_amount), class: "btn btn-primary", style:"background-color:green" %></div>
+
 </div>
 </div>
+
+ <footer class="bg-dark text-light py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <h4>About Us</h4>
+          <p> we are virtu Market hub that allows you to shop from your favourite  shop in yur city</p>
+        </div>
+        <div class="col-md-4">
+          <h4>Quick Links</h4>
+          <ul class="list-unstyled">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h4>Contact Us</h4>
+          <address>
+            
+            <p>haridwar, uttarakhand, 249408</p>
+            <p>Email: info@example.com</p>
+            <p>Phone: (123) 456-7890</p>
+          </address>
+        </div>
+      </div>
+    </div>
+  </footer>

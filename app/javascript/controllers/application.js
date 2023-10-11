@@ -13,6 +13,9 @@ document.addEventListener("turbo:load", function () {
 const showLocationFormLink = document.getElementById("show-location-form");
 const hideLocationFormButton = document.getElementById("hide-location-form");
 const locationForm = document.getElementById("location-form");
+const form = document.querySelector("form");
+
+
 const storageKey = "locationFormVisible";
 let isLocationFormVisible = sessionStorage.getItem(storageKey) === "true";
 const updateLocationFormVisibility = () => {
@@ -40,13 +43,24 @@ hideLocationFormButton.addEventListener("click", function (e) {
     updateLocationFormVisibility();
     
 });
+
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+  isLocationFormVisible = false;
+  sessionStorage.setItem(storageKey, "false");
+  updateLocationFormVisibility();
+  form.submit();
+ 
 });
+
+
+})
 
 document.addEventListener("turbo:load", function () {
   const citySelect = document.getElementById('city-select');
   const areaContainer = document.getElementById('area-container');
   
-  // Define areas for each city
+  
   const cityAreas = {
     'Delhi': ['mohan nagar', 'cannaught place'],
     'Haridwar': ['shakti nagar', 'arya nagar chowk'],
@@ -55,16 +69,16 @@ document.addEventListener("turbo:load", function () {
     'Mumbai': ['bombay road', 'sevai nagar'],
   };
 
-  // Function to update the area options
+  
   function updateAreaOptions() {
     const selectedCity = citySelect.value;
     const areas = cityAreas[selectedCity] || [];
     const areaSelect = areaContainer.querySelector('select');
     
-    // Clear existing options
+    
     areaSelect.innerHTML = '';
 
-    // Add new options
+    
     areas.forEach(area => {
       const option = document.createElement('option');
       option.value = area;
@@ -72,11 +86,11 @@ document.addEventListener("turbo:load", function () {
       areaSelect.appendChild(option);
     });
 
-    // Store the selected city in localStorage
+    
     localStorage.setItem('selectedCity', selectedCity);
   }
 
-  // Initialize the city select with the stored value from localStorage
+  
   const storedCity = localStorage.getItem('selectedCity');
   if (storedCity) {
     citySelect.value = storedCity;
@@ -88,6 +102,30 @@ document.addEventListener("turbo:load", function () {
   // Update options when the city select value changes
   citySelect.addEventListener('change', updateAreaOptions);
 });
+
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const slides = document.querySelectorAll(".carousel-slide");
+    let currentSlide = 0;
+
+    function showSlide(slideIndex) {
+      slides[currentSlide].classList.remove("active");
+      slides[slideIndex].classList.add("active");
+      currentSlide = slideIndex;
+    }
+
+    // Automatically advance the carousel (you can also add manual controls)
+    function nextSlide() {
+      const nextIndex = (currentSlide + 1) % slides.length;
+      showSlide(nextIndex);
+    }
+
+    // Change slides every 3 seconds
+    setInterval(nextSlide, 3000);
+  });
+
+
+
 
 
 

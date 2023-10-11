@@ -1,11 +1,11 @@
 <div style="display: flex;flex-direction:column;align-items: center;margin-bottom:50px;background-color: rgb(197, 154, 236);"><h1>PLACE YOUR ORDER🚚</h1></div>
-<div style="margin-left: 2px;width: fit-content;font-family: Arial, sans-serif; font-size: 25px; color: #333; padding: 10px;background-color:rgb(133, 133, 225)">
+<div style="margin-left: 2px;width: fit-content;font-family: Arial, sans-serif;font-size: 25px; color: #333; padding: 10px;background-color:rgb(133, 133, 225)">
   <% if @user %>
-    Your address: <%= @user.address %>
+    <p class="second-one-div">Your address🏠: <%= @user.address %><p>
   <%end%>
 </div>
 <% order_details="" %>
-<div style="display: flex;flex-direction: column;align-items: center;margin-top: 50px;">
+<div style="display: flex;flex-direction: column;align-items: center;margin-top: 50px;padding:10px;border:solid black">
     <h2 style="color:green">ORDER SUMMARY</h2>
     <%if @items %>
         <% @items.each do |item| %>
@@ -24,7 +24,7 @@
             <%= f.hidden_field :payment_check, value: true %>
             <%= f.hidden_field :amount, value: @total_amount %>
 
-            <%= f.submit "Submit Order", class: "btn btn-primary" %>
+            <%= f.submit "Submit Order", class: "btn btn-primary", style: "background-color:green" %>
         <% end %>
     <% end %>
 
